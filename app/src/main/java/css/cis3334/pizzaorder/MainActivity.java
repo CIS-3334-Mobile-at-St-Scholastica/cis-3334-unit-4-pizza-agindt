@@ -20,16 +20,23 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtStatus;
     TextView txtPizzasOrdered;
     Spinner spinnerToppings;
+    PizzaOrderInterface newOrder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        newOrder = new PizzaOrder(this);
+
         // Set up our radio buttons
         rbSmall = (RadioButton) findViewById(R.id.radioButtonSmall);
+        rbSmall.setText(rbSmall.getText() + " - " + newOrder.getPrice(Pizza.pizzaSize.SMALL).toString());
         rbMedium = (RadioButton) findViewById(R.id.radioButtonMedium);
+        rbMedium.setText(rbMedium.getText() +  " - " + newOrder.getPrice(Pizza.pizzaSize.MEDIUM).toString());
         rbLarge = (RadioButton) findViewById(R.id.radioButtonLarge);
+        rbLarge.setText(rbLarge.getText() +  " - " + newOrder.getPrice(Pizza.pizzaSize.LARGE).toString());
 
         // Set up the Check Boxes
         chkbxCheese = (CheckBox) findViewById(R.id.checkBoxCheese);
@@ -56,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         String orderDescription = "No orders yet";
 
         // ****** For the Practice Activity, students need to call to OrderPizza here
+
+
         // ****** For the Assignment, students will modify the order to fit the type of pizza the user selects using the UI widgets
 
         //display a pop up message for a long period of time
