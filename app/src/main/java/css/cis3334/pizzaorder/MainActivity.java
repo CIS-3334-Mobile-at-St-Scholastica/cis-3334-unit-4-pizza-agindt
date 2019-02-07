@@ -61,9 +61,39 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         // ****** For the Assignment, students need to add code here to get information from the UI widgets...
 
         String orderDescription = "No orders yet";
+        String topping = spinnerToppings.getSelectedItem().toString();
+        String pSize = "Small";
+
+        if (rbSmall.isChecked())
+        {
+            pSize = "Small";
+        }
+        else if (rbMedium.isChecked())
+        {
+            pSize = "Medium";
+        }
+        else if (rbLarge.isChecked())
+        {
+            pSize = "Large";
+        }
+
+        Boolean cheesiness = false;
+
+        if (chkbxCheese.isChecked())
+        {
+            cheesiness = true;
+        }
+
+        boolean forDelivery = false;
+
+        if (chkbxDelivery.isChecked())
+        {
+            forDelivery = true;
+        }
 
         // ****** For the Practice Activity, students need to call to OrderPizza here
-        orderDescription = newOrder.OrderPizza("Pepporoni", "Large", false);
+        orderDescription = newOrder.OrderPizza(topping, pSize, cheesiness);
+        newOrder.setDelivery(forDelivery);
         txtTotal.setText("Your total is: " + newOrder.getTotalBill().toString());
 
 
